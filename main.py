@@ -1,5 +1,14 @@
 #!/usr/local/bin/python2.7
 
+import argparse
+
+parser = argparse.ArgumentParser(description='helper amortization schedule')
+parser.add_argument('-loan', type=float, help='current loan value', required=True)
+parser.add_argument('-escrow', type=float, help='current float value', required=True)
+
+args = parser.parse_args()
+print(args.loan)
+
 def p(before, a,b = 10):
   b += 1
   return ("%s${:<%d,.2f}" % (before, b)).format(a)
@@ -8,11 +17,11 @@ def p2(a,b = 10):
     return ("{:<%d,}" % b).format(a)
 
 rate=.03625;
-loan=155507.0;
+loan=args.loan
 months = 0;
 interest_paid = 0.0;
 month = 1;
-escrow = 211.0;
+escrow = args.escrow
 monthly = 1501.05 - escrow;
 
 while loan > 0:
