@@ -4,10 +4,9 @@ import argparse
 
 parser = argparse.ArgumentParser(description='helper amortization schedule')
 parser.add_argument('-loan', type=float, help='current loan value', required=True)
-parser.add_argument('-escrow', type=float, help='current float value', required=True)
+parser.add_argument('-escrow', type=float, help='current float value', default=210.96)
 
 args = parser.parse_args()
-print(args.loan)
 
 def p(before, a,b = 10):
   b += 1
@@ -30,7 +29,7 @@ while loan > 0:
   interest_paid += month_interest;
   loan -= monthly - month_interest;
   if months < 5 or months % (5 if months < 100 else 10) == 0:
-    print "month", p2(month, 3), p("interest=", month_interest, 6), p("principal=", 1290 - month_interest, 8), p("total interest=", interest_paid, 9), p("remaining=", loan, 11);
+    print "month", p2(month, 3), p("interest=", month_interest, 6), p("principal=", monthly - month_interest, 8), p("total interest=", interest_paid, 9), p("remaining=", loan, 11);
 
   month += 1;
 
