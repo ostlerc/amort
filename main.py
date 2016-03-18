@@ -34,4 +34,4 @@ while loan > 0:
 
   month += 1;
 
-print p2(months,3), " months", p2(months/12.0, 3), p(" years. Total Interest paid: ", interest_paid)
+print p2(months,3), " months", p2(round(months/12.0,1), 3), p(" years. Total Interest paid: ", interest_paid, 1)
